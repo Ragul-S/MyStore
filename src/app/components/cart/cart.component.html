@@ -1,0 +1,19 @@
+<div id="cart-container">
+    <div class="cart-panel">
+        <h2>Your cart</h2>
+        <ul>
+            <app-cart-item class="cart-item-details" *ngFor="let product of products" [product]="product" (total)="updateTotal(total)"></app-cart-item>
+    </ul>
+    <p>Total: $ {{ total }}</p>
+    <p *ngIf="total<1">... is empty</p>
+    </div>
+    <div>
+    <h3>Fill in your details</h3>
+    <form #form="ngForm" (ngSubmit)="submitForm()" class="form-margin">
+        <input type="text" name="name" [(ngModel)]="name" placeholder="(min 3 characters)" minlength="3" required>
+        <input type="text" name="address" [(ngModel)]="address" placeholder="(min 6 characters)" minlength="6" required>
+        <input type="text" name="creditCard" [(ngModel)]="creditcard" placeholder="(16 digit number)" minlength="16" required>
+        <button type="submit" [disabled]="form.invalid" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+</div>

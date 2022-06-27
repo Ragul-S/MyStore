@@ -1,0 +1,24 @@
+<form #form="ngForm">
+<div class="product-container">
+    <a routerLink="/item-detail/{{ product.id }}">
+        <img class="product-image" src='{{ product.url }}'>
+    </a>
+    <div><b>{{ product.name }}</b></div>
+    <div>$ {{ product.price}}</div>
+    <div>
+        <select class="select-input" name="quantity" [(ngModel)]="quantity">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            </div>
+            <div><button class="btn btn-primary" (click)="addToCart()">Add to cart</button></div>
+    </div>
+</form>
