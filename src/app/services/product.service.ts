@@ -13,6 +13,10 @@ export class ProductService {
   productFound = new Product();
 
   constructor(private http: HttpClient) {
+    this.getProduct().subscribe(res => {
+      this.products = res;
+      console.log(this.products);
+    })
    }
 
   getProduct(): Observable<Product[]>{
@@ -20,10 +24,10 @@ export class ProductService {
   }
 
   getProductById(id: number): Product {
-    this.getProduct().subscribe(res => {
-      this.products = res;
-    })
+
     const productFound : Product | undefined = this.products.find(p => p.id == id);
+    console.log(`Found : ${productFound}`);
+    console.log(id);
     if(productFound){
       return productFound;
     }

@@ -14,14 +14,13 @@ export class ProductItemDetailComponent implements OnInit {
   quantity : number = 1;
 
   constructor(private cart: CartService, private route: ActivatedRoute, private productService: ProductService) {
-    this.route.params.subscribe(params => {
-      this.product = this.productService.getProductById(params['id']);
-      this.quantity = this.product.quantity;
-    });
+   
    }
 
   ngOnInit(): void {
-
+    this.route.params.subscribe(params => {
+      this.product = this.productService.getProductById(params['id']);
+    });
   }
 
   addToCart(): void {

@@ -40,3 +40,25 @@ Feel free to use this overview and the rubric specifications to create this proj
 8. **Generate and create other components**. How do these components interact, if at all, with the component you first created? How can we facilitate sharing information between them?
 9. **Create routing** between components. Which components are linked by the router? How is the app routing module set up and configured to make sure the page doesn't reload during navigation?
 10. **Ensure that inputs are validated** in the client. For example, your checkout form needs to collect information from the user in order for them to complete the checkout process. How do you ensure that you are collecting accurate information from the user?
+
+## Run
+
+### Install Dependencies
+
+fork this repo and open a terminal at the root directory and run the command
+
+```
+npm install
+```
+
+## Start server
+
+On the same terminal, run the command
+
+```
+ng serve
+```
+
+Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+**NB**: Be sure to allow the default port of `4200`

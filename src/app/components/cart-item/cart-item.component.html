@@ -3,5 +3,5 @@
     <div><b>{{ product.name }}</b></div>
     <div>$ {{ product.price}}</div>
     <label for="amount">Amount: </label>
-    <input type="number" id="amount" max="10" (input)="updateQuantity()" (click)="total.emit(cartTotal)" [(ngModel)]=product.quantity>
+    <input type="number" id="amount" max="10" (click)="total.emit(cartTotal)" [(ngModel)]=product.quantity (ngModelChange)="updateQuantity = $event">
 </div>

@@ -25,18 +25,23 @@ export class CartComponent implements OnInit {
   }
 
   submitForm(): void{
+    if(this.total<=0){
+      alert("Cart is empty");
+    }
+    else{
     this.order.fullname = this.name;
     this.order.address = this.address;
     this.order.creditCard = this.creditcard;
     this.order.products = this.products;
     this.order.total = this.total;
-
+    
     this.cart.confirmOrder(this.order);
     this.router.navigateByUrl("/confirm");
+    }
   }
 
   updateTotal(total: number){
-    this.total = total;
+    this.total = this.cart.getTotal();
   }
 
 }

@@ -5,15 +5,24 @@
             <app-cart-item class="cart-item-details" *ngFor="let product of products" [product]="product" (total)="updateTotal(total)"></app-cart-item>
     </ul>
     <p>Total: $ {{ total }}</p>
-    <p *ngIf="total<1">... is empty</p>
+    <p *ngIf="total<1">Cart is empty</p>
     </div>
     <div>
     <h3>Fill in your details</h3>
     <form #form="ngForm" (ngSubmit)="submitForm()" class="form-margin">
-        <input type="text" name="name" [(ngModel)]="name" placeholder="(min 3 characters)" minlength="3" required>
-        <input type="text" name="address" [(ngModel)]="address" placeholder="(min 6 characters)" minlength="6" required>
-        <input type="text" name="creditCard" [(ngModel)]="creditcard" placeholder="(16 digit number)" minlength="16" required>
+        <input type="text" name="name" [(ngModel)]="name" #fullname="ngModel" placeholder="(min 3 characters)" minlength="3" required>
+        <input type="text" name="address" [(ngModel)]="address" #cartaddress="ngModel" placeholder="(min 6 characters)" minlength="6" required>
+        <input type="text" name="creditCard" [(ngModel)]="creditcard" #card="ngModel" pattern="(\d{4}(\s)?){4}" placeholder="(16 digit number)" minlength="16" required>
         <button type="submit" [disabled]="form.invalid" class="btn btn-primary">Submit</button>
     </form>
+    <div class="error-message" *ngIf="card.invalid && card.dirty">
+        Please enter a valid credit card number (16-digit number)
+    </div>
+    <div class="error-message" *ngIf="fullname.invalid && fullname.dirty">
+        Please enter a valid name
+    </div>
+    <div class="error-message" *ngIf="cartaddress.invalid && cartaddress.dirty">
+        Please enter a valid address
+    </div>
     </div>
 </div>
